@@ -1,0 +1,51 @@
+iimmppoorrtt jjaavvaa..iioo..BByytteeAArrrraayyIInnppuuttSSttrreeaamm;;
+iimmppoorrtt jjaavvaa..iioo..BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm;;
+iimmppoorrtt jjaavvaa..iioo..IIOOEExxcceeppttiioonn;;
+iimmppoorrtt jjaavvaa..uuttiill..AArrrraayyss;;
+
+//**
+ II//OO
+ 추추상상 클클래래스스
+ IInnppuuttSSttrreeaamm,,OOuuttSSttrreeaamm ((BByyttee))
+ 두두개개의의 클클래래스스를를 상상속속((재재정정의의))하하는는 클클래래스스를를 통통해해 입입출출력력 작작업업을을 할할 수수 있있다다..
+ 
+ 읽읽을을수수 있있는는 대대상상에에 따따라라서서
+ 11..mmeemmoorryy :: BByytteeAArrrraayyIInnppuuttSSttrreeaamm // BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm
+ 22..FFiillee((중중요요)) :: FFiilleeIInnppuuttSSttrreeaamm //FFiilleeOOuuttppuuttSSttrreeaamm
+  
+ 
+ **//
+ppuubblliicc ccllaassss EExx0011__SSttrreeaamm {{
+
+	ppuubblliicc ssttaattiicc vvooiidd mmaaiinn((SSttrriinngg[[]] aarrggss)) tthhrroowwss IIOOEExxcceeppttiioonn {{
+		//// bbyyttee ((--112288~~++112277)) 정정수수값값을을 저저장장하하는는 타타입입
+		bbyyttee[[]] iinnSSrrcc == {{ 00,, 11,, 22,, 33,, 44,, 55,, 66,, 77,, 88,, 99 }};;
+		bbyyttee[[]] oouuttSSrrcc == nnuullll;; //// 현현재재는는 메메모모리리를를 가가지지고고 있있지지 않않아아요요
+
+		//// 내내가가 데데이이터터를를 rreeaadd,, wwrriittee 하하는는 대대상상을을 MMeemmoorryy 
+		BByytteeAArrrraayyIInnppuuttSSttrreeaamm iinnppuutt == nnuullll;;
+		BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm oouuttppuutt == nnuullll;;
+
+		iinnppuutt == nneeww BByytteeAArrrraayyIInnppuuttSSttrreeaamm((iinnSSrrcc));; //// rreeaadd
+		//// 생생성성자자를를 통통해해서서 iinnSSrrcc배배열열의의 값값을을 rreeaadd 할할
+		oouuttppuutt == nneeww BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm(());; //// wwiirrttee
+
+		SSyysstteemm..oouutt..pprriinnttllnn((""oouuttSSrrcc bbeeffoorree :: "" ++ AArrrraayyss..ttooSSttrriinngg((oouuttSSrrcc))));;
+		//// 공공식식같같은은 로로직직((암암기기
+		iinntt ddaattaa == 00;;
+		wwhhiillee ((((ddaattaa == iinnppuutt..rreeaadd(()))) !!== --11)) {{//// 더더이이상상 rreeaadd 할할 ddaattaa 가가 없없다다면면 --11
+			//// SSyysstteemm..oouutt..pprriinnttllnn((""ddaattaa :: "" ++ ddaattaa));;
+			//// SSyysstteemm..oouutt..pprriinnttllnn((""iinnppuutt..rreeaadd(())"" ++ iinnppuutt..rreeaadd(())));;
+			//// rreeaadd(())함함수수는는 내내부부적적으으로로 nneexxtt 기기능능을을 가가지지고고 있있다다
+			oouuttppuutt..wwrriittee((ddaattaa));;
+			//// 자자기기 자자신신에에서서 ddaattaa 함함수수의의 변변수수 값값을을 rreeaadd 해해서서 wwrriittee 하하겠겠다다..
+			//// wwrriittee 하하는는 대대상상이이 oouuttppuutt 이이다다 ((BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm)) 자자신신의의 통통로로에에 rreeaadd 한한
+			//// ddaattaa 를를 가가지지고고 있있다다
+		}}
+		oouuttSSrrcc == oouuttppuutt..ttooBByytteeAArrrraayy(());;
+		//// ttooBByytteeAArrrraayy >>>> 자자기기가가 가가지지고고 있있는는 값값을을 배배열열로로 만만들들어어서서 그그 주주소소값값을을 oouuttSSrrcc 에에게게 할할당당
+		SSyysstteemm..oouutt..pprriinnttllnn((""oouuttSSrrcc :: "" ++ AArrrraayyss..ttooSSttrriinngg((oouuttSSrrcc))));;
+
+	}}
+
+}}
